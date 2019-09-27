@@ -1,4 +1,4 @@
-import sys, os, subprocess
+import sys, os, subprocess, re
 
 # file of pdf paths
 PDF_FILE = "C:\\Users\\Damian\\Documents\\Programming\\Python\\PDF_Related\\pdf_session_loader\\pdf_scripts\\pdf_files.txt"
@@ -25,7 +25,8 @@ if len(sys.argv) > 1:
             else:
                 while True:
                     pdf_path = file_object.readline().strip()
-                    if pdf_path == "END" or pdf_path == "":
+                    #if pdf_path == "END" or pdf_path == "":
+                    if re.fullmatch(r"\[.*\]", pdf_path) or pdf_path == "":
                         break
                     if not os.path.exists(pdf_path):
                         print("Error: The file \"{}\" does not exist".format(pdf_path))
