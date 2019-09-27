@@ -1,7 +1,7 @@
 import sys, os, subprocess
 
 # file of pdf paths
-PDF_FILE = "C:\\Users\\Damian\\Documents\\Programming\\Python\\pdf_scripts\\pdf_files.txt"
+PDF_FILE = "C:\\Users\\Damian\\Documents\\Programming\\Python\\PDF_Related\\pdf_session_loader\\pdf_scripts\\pdf_files.txt"
 PDF_THEME = ""
 
 argList = []
@@ -25,8 +25,11 @@ if len(sys.argv) > 1:
             else:
                 while True:
                     pdf_path = file_object.readline().strip()
-                    if pdf_path == "END":
+                    if pdf_path == "END" or pdf_path == "":
                         break
+                    if not os.path.exists(pdf_path):
+                        print("Error: The file \"{}\" does not exist".format(pdf_path))
+                        exit(1)
                     argList.append(pdf_path)
                 break
     

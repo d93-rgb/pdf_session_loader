@@ -102,3 +102,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# customly added
+pdf_scripts/pdf_files.txt
