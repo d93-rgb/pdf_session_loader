@@ -16,7 +16,15 @@ if len(sys.argv) > 1:
         #append_pdf_list(argList, MATHS_PDFS)
     elif sys.argv[1] == "engineering":
         PDF_THEME = "[ENGINEERING]"
-        #append_pdf_list(argList, ENG_PDFS)    
+        #append_pdf_list(argList, ENG_PDFS)
+    elif sys.argv[1] = "NT" or sys.argv[1] = "nt"
+        PDF_THEME = "[NACHRICHTENTECHNIK]"
+    elif sys.argv[1] = "RT" or sys.argv[1] = "rt"
+        PDF_THEME = "[REGELUNGSTECHNIK]"
+    elif sys.argv[1] = "HT" or sys.argv[1] = "ht"
+        PDF_THEME = "[HOCHFREQUENZTECHNIK]"
+    elif sys.argv[1] = "ALGO" or sys.argv[1] = "algo" or sys.argv[1] = "alg"
+        PDF_THEME = "[ALGORITHMEN UND DATENSTRUKTUREN]"
 
     with open(PDF_FILE, "r", encoding="utf8") as file_object:    
         for line in file_object:
