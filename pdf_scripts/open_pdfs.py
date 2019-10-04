@@ -3,30 +3,36 @@ import sys, os, subprocess, re
 # file of pdf paths
 PDF_FILE = "C:\\Users\\Damian\\Documents\\Programming\\Python\\PDF_Related\\pdf_session_loader\\pdf_scripts\\pdf_files.txt"
 PDF_THEME = ""
+NO_SESSION_DIRECTORY = "C:\\Users\\Damian\\Documents\\SumatraPDF\\No Session\\"
 
+NO_SESSION = False
 argList = []
 
-# pdf file names
+# processing arguments
 if len(sys.argv) > 1:
-    if sys.argv[1] == "physics":
-        PDF_THEME = "[PHYSICS]"
-        #append_pdf_list(argList, PHYSICS_PDFS)  
-    elif sys.argv[1] == "maths":
-        PDF_THEME = "[MATHS]"
-        #append_pdf_list(argList, MATHS_PDFS)
-    elif sys.argv[1] == "engineering":
-        PDF_THEME = "[ENGINEERING]"
-        #append_pdf_list(argList, ENG_PDFS)
-    elif sys.argv[1] == "NT" or sys.argv[1] == "nt":
-        PDF_THEME = "[NACHRICHTENTECHNIK]"
-    elif sys.argv[1] == "RT" or sys.argv[1] == "rt":
-        PDF_THEME = "[REGELUNGSTECHNIK]"
-    elif sys.argv[1] == "HT" or sys.argv[1] == "ht":
-        PDF_THEME = "[HOCHFREQUENZTECHNIK]"
-    elif sys.argv[1] == "EDS" or sys.argv[1] == "eds":
-        PDF_THEME = "[ENTWURF DIGITALER SYSTEME]"
-    elif sys.argv[1] == "ALGO" or sys.argv[1] == "algo" or sys.argv[1] == "alg":
-        PDF_THEME = "[ALGORITHMEN UND DATENSTRUKTUREN]"
+    print(sys.argv)
+    for args in sys.argv:
+        if args == "nosession":
+            NO_SESSION = True
+        elif args == "physics":
+            PDF_THEME = "[PHYSICS]"
+            #append_pdf_list(argList, PHYSICS_PDFS)  
+        elif args == "maths":
+            PDF_THEME = "[MATHS]"
+            #append_pdf_list(argList, MATHS_PDFS)
+        elif args == "engineering":
+            PDF_THEME = "[ENGINEERING]"
+            #append_pdf_list(argList, ENG_PDFS)
+        elif args == "NT" or args == "nt":
+            PDF_THEME = "[NACHRICHTENTECHNIK]"
+        elif args == "RT" or args == "rt":
+            PDF_THEME = "[REGELUNGSTECHNIK]"
+        elif args == "HT" or args == "ht":
+            PDF_THEME = "[HOCHFREQUENZTECHNIK]"
+        elif args == "EDS" or args == "eds":
+            PDF_THEME = "[ENTWURF DIGITALER SYSTEME]"
+        elif args == "ALGO" or args == "algo" or args == "alg":
+            PDF_THEME = "[ALGORITHMEN UND DATENSTRUKTUREN]"
 
     with open(PDF_FILE, "r", encoding="utf8") as file_object:    
         for line in file_object:
@@ -45,6 +51,9 @@ if len(sys.argv) > 1:
                 break
     
     if argList:
+        if NO_SESSION:
+            argList.insert(0, NO_SESSION_DIRECTORY)
+            argList.insert(0, "-appdata")
         subprocess.Popen(
         ["C:\\Program Files\\SumatraPDF\\SumatraPDF.exe",
         *argList])
