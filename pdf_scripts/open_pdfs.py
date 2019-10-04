@@ -1,8 +1,12 @@
 import sys, os, subprocess, re
 
-# file of pdf paths
-PDF_FILE = "C:\\Users\\Damian\\Documents\\Programming\\Python\\PDF_Related\\pdf_session_loader\\pdf_scripts\\pdf_files.txt"
+# file with the pdf paths, create it manually if it's not existing
+PDF_FILE = """C:\\Users\\Damian\\Documents\\Programming\\Python\\PDF_Related\\
+    pdf_session_loader\\pdf_scripts\\pdf_files.txt"""
+# type of pdfs to open
 PDF_THEME = ""
+
+# specify alternative SumatraPDF appdata folder to allow some multiple session functionality
 NO_SESSION_DIRECTORY = "C:\\Users\\Damian\\Documents\\SumatraPDF\\No Session\\"
 
 NO_SESSION = False
@@ -34,6 +38,7 @@ if len(sys.argv) > 1:
         elif args == "ALGO" or args == "algo" or args == "alg":
             PDF_THEME = "[ALGORITHMEN UND DATENSTRUKTUREN]"
 
+# utf8 encoding for german letters like äöüß
     with open(PDF_FILE, "r", encoding="utf8") as file_object:    
         for line in file_object:
             if line.strip() != PDF_THEME:
