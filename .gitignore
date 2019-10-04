@@ -106,3 +106,4 @@ venv.bak/
 # customly added
 pdf_scripts/pdf_files.txt
 .vscode
+*/.vscode
