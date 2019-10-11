@@ -1,8 +1,8 @@
 import sys, os, subprocess, re
 
 # file with the pdf paths, create it manually if it's not existing
-PDF_FILE = """C:\\Users\\Damian\\Documents\\Programming\\Python\\PDF_Related\\
-    pdf_session_loader\\pdf_scripts\\pdf_files.txt"""
+PDF_FILE = ('C:\\Users\\Damian\\Documents\\Programming\\Python\\PDF_Related\\'
+    'pdf_session_loader\\pdf_scripts\\pdf_files.txt')
 # type of pdfs to open
 PDF_THEME = ""
 
@@ -63,6 +63,11 @@ if len(sys.argv) > 1:
         ["C:\\Program Files\\SumatraPDF\\SumatraPDF.exe",
         *argList])
     else:
+        if NO_SESSION:
+            argList.insert(0, NO_SESSION_DIRECTORY)
+            argList.insert(0, "-appdata")
+            subprocess.Popen(
+            ["C:\\Program Files\\SumatraPDF\\SumatraPDF.exe"])
         print("Error: PDF file list is empty.")
 else:
     print("Error: Nothing to open.")
