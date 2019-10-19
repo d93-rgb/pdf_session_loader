@@ -35,7 +35,7 @@ if len(sys.argv) > 1:
             PDF_THEME = "[HOCHFREQUENZTECHNIK]"
         elif args == "EDS" or args == "eds":
             PDF_THEME = "[ENTWURF DIGITALER SYSTEME]"
-        elif args == "ALGO" or args == "algo" or args == "alg":
+        elif args == "ALGO" or args == "algo" or args == "alg" or args == "ads":
             PDF_THEME = "[ALGORITHMEN UND DATENSTRUKTUREN]"
 
 # utf8 encoding for german letters like äöüß
@@ -47,7 +47,8 @@ if len(sys.argv) > 1:
                 while True:
                     pdf_path = file_object.readline().strip()
                     #if pdf_path == "END" or pdf_path == "":
-                    if re.fullmatch(r"\[.*\]", pdf_path) or pdf_path == "":
+                    if re.fullmatch(r"\[.*\]", pdf_path) or pdf_path == "" \
+                        or pdf_path[0] == '#':      
                         break
                     if not os.path.exists(pdf_path):
                         print("Error: The file \"{}\" does not exist".format(pdf_path))
