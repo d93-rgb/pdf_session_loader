@@ -14,7 +14,6 @@ argList = []
 
 # processing arguments
 if len(sys.argv) > 1:
-    print(sys.argv)
     for args in sys.argv:
         if args == "nosession":
             NO_SESSION = True
@@ -55,17 +54,15 @@ if len(sys.argv) > 1:
                         exit(1)
                     argList.append(pdf_path)
                 break
-    
-    if not argList and not NO_SESSION:
-        print("Error: PDF file list is empty.")
-        exit(1)
-    if NO_SESSION:
-        argList.insert(0, NO_SESSION_DIRECTORY)
-        argList.insert(0, "-appdata")
-    subprocess.Popen(
-    ["C:\\Program Files\\SumatraPDF\\SumatraPDF.exe",
-    *argList])
-else:
-    print("Error: Nothing to open.")
+
+if not argList and NO_SESSION:
+    print("Error: PDF file list is empty.")
+    exit(1)
+if NO_SESSION:
+    argList.insert(0, NO_SESSION_DIRECTORY)
+    argList.insert(0, "-appdata")
+subprocess.Popen(
+["C:\\Program Files\\SumatraPDF\\SumatraPDF.exe",
+*argList])
 #os.system('"C:\\Program Files\\SumatraPDF\\SumatraPDF.exe"')
 
