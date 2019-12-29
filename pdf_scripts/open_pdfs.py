@@ -36,6 +36,9 @@ if len(sys.argv) > 1:
             PDF_THEME = "[ENTWURF DIGITALER SYSTEME]"
         elif args == "ALGO" or args == "algo" or args == "alg" or args == "ads":
             PDF_THEME = "[ALGORITHMEN UND DATENSTRUKTUREN]"
+        # exams
+        elif args == "eds_exams":
+            PDF_THEME = "[EDS KLAUSUREN]"
 
 # utf8 encoding for german letters like äöüß
     with open(PDF_FILE, "r", encoding="utf8") as file_object:    
