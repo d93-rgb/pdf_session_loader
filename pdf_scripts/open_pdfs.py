@@ -49,9 +49,10 @@ if len(sys.argv) > 1:
                 while True:
                     pdf_path = file_object.readline().strip()
                     #if pdf_path == "END" or pdf_path == "":
-                    if re.fullmatch(r"\[.*\]", pdf_path) or pdf_path == "" \
-                        or pdf_path[0] == '#':      
+                    if re.fullmatch(r"\[.*\]", pdf_path) or pdf_path == "":  
                         break
+                    elif pdf_path[0] == '#':
+                        continue
                     if not os.path.exists(pdf_path):
                         print("Error: The file \"{}\" does not exist".format(pdf_path))
                         exit(1)
